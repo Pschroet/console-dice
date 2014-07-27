@@ -1,0 +1,1 @@
+@ruby %~dp0/roll.rb %1%
