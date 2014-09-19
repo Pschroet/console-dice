@@ -1,6 +1,6 @@
 #roll a number of dice
 diceMuster = /[0-9]+d[0-9]+/							#a number of dice with number of sides
-useExplodingDice = false								#boolean to determine if the highest number triggers further rolls
+@useExplodingDice = false								#boolean to determine if the highest number triggers further rolls
 input = ""
 
 def diceRoll(input)
@@ -13,15 +13,19 @@ def diceRoll(input)
 		temp = rand(sides) + 1							#the throw itself
 		rolls.push(temp)								#put the roll in the array
 		result += temp									#add it to the result so far
+		while(temp == sides && @useExplodingDice)		#if exploding dice is used and the highest number is rolled
+			temp = rand(sides) + 1						#the throw itself
+			rolls.push(temp)								#put the roll in the array
+			result += temp									#add it to the result so far
+		end
 	end
 	puts "You rolled #{number}d#{sides}. Result is #{result} #{rolls}"
 end
 
 #check the arguments
 for arg in ARGV
-	puts arg
 	if arg == "-x"
-		then useExplodingDice = true
+		then @useExplodingDice = true
 	elsif(arg.match(/[0-9]+d[0-9]+/))
 		if(input != "")
 			input = input + "+" + arg
@@ -30,8 +34,6 @@ for arg in ARGV
 		end
 	end
 end
-
-puts input
 
 #roll the dice
 if nil==""
