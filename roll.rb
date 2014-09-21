@@ -43,7 +43,7 @@ end
 
 #roll the dice
 if nil==""
-	puts "Missing argument: [number]d[number][ [number]d[number] ...]*"
+	puts "Missing argument: [number]d[number][+[number]] [[number]d[number][+[number]] ...]*"
 elsif(input.match(/[0-9]+d[0-9]+([+][0-9]+)*([+][0-9]+d[0-9]+([+][0-9]+)*)*/))	#if there dices
 	dices = input.split("*")
 	dices.each{
@@ -51,5 +51,5 @@ elsif(input.match(/[0-9]+d[0-9]+([+][0-9]+)*([+][0-9]+d[0-9]+([+][0-9]+)*)*/))	#
 		diceRoll(dice)
 	}
 else
-	print "#{ARGV} is wrong as argument, usage is [number]d[number][ [number]d[number] ...]*"
+	print "#{ARGV} is wrong as argument, usage is [number]d[number][+[number]] [[number]d[number][+[number]] ...]*"
 end
