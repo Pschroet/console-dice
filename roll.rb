@@ -42,14 +42,12 @@ for arg in ARGV
 end
 
 #roll the dice
-if nil==""
-	puts "Missing argument: [number]d[number][+[number]] [[number]d[number][+[number]] ...]*"
+if input==""
+	puts "Missing or wrong argument(s): [number]d[number][+[number]] [[number]d[number][+[number]] ...]*"
 elsif(input.match(/[0-9]+d[0-9]+([+][0-9]+)*([+][0-9]+d[0-9]+([+][0-9]+)*)*/))	#if there dices
 	dices = input.split("*")
 	dices.each{
 		|dice|
 		diceRoll(dice)
 	}
-else
-	print "#{ARGV} is wrong as argument, usage is [number]d[number][+[number]] [[number]d[number][+[number]] ...]*"
 end
